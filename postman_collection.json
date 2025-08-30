@@ -1,0 +1,202 @@
+{
+  "info": {
+    "name": "HydroNet API",
+    "description": "API collection for HydroNet Green Hydrogen Infrastructure Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Sign Up",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/signup",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "signup"]
+            }
+          }
+        },
+        {
+          "name": "Sign In",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "me"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/logout",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data APIs",
+      "item": [
+        {
+          "name": "Get All Assets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/assets",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "assets"]
+            }
+          }
+        },
+        {
+          "name": "Get Renewables",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/renewables",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "renewables"]
+            }
+          }
+        },
+        {
+          "name": "Get Demand Centers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/demand-centers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "demand-centers"]
+            }
+          }
+        },
+        {
+          "name": "Get Transport Routes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/transport-routes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "transport-routes"]
+            }
+          }
+        },
+        {
+          "name": "Generate Recommendations",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"renewableWeight\": 0.3,\n  \"demandWeight\": 0.3,\n  \"regulatoryWeight\": 0.2,\n  \"costWeight\": 0.2,\n  \"maxDistance\": 50,\n  \"minCapacity\": 10\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/recommendations",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "recommendations"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Charts Data",
+      "item": [
+        {
+          "name": "Supply Demand Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/charts/supply-demand",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "charts", "supply-demand"]
+            }
+          }
+        },
+        {
+          "name": "Capacity by Region",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/charts/capacity-region",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "charts", "capacity-region"]
+            }
+          }
+        },
+        {
+          "name": "Cost Distance Data",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mock/charts/cost-distance",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mock", "charts", "cost-distance"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

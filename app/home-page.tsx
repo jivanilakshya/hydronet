@@ -52,7 +52,7 @@ export default function HomePage() {
         </div>
 
         {/* Features Grid */}
-        <div className="mt-20 grid md:grid-cols-3 gap-8 text-gray-600">
+        <div className="mt-20 grid md:grid-cols-3 gap-8">
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
