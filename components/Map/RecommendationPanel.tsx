@@ -50,15 +50,12 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
   };
 
   return (
-    <Card className="w-80">
-      <CardHeader>
-        <CardTitle className="text-lg text-gray-600">Site Recommendations</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
+    <div className="space-y-4">
+      <div className="space-y-4">
         <div className="space-y-3">
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Renewable Proximity Weight</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Renewable Proximity Weight</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="0"
@@ -66,15 +63,17 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="0.1"
                 value={criteria.renewableWeight}
                 onChange={(e) => handleSliderChange('renewableWeight', parseFloat(e.target.value))}
-                className="flex-1 text-gray-600"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.renewableWeight.toFixed(1)}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.renewableWeight.toFixed(1)}
+              </span>
             </div>
           </div>
 
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Demand Access Weight</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Demand Access Weight</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="0"
@@ -82,15 +81,17 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="0.1"
                 value={criteria.demandWeight}
                 onChange={(e) => handleSliderChange('demandWeight', parseFloat(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.demandWeight.toFixed(1)}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.demandWeight.toFixed(1)}
+              </span>
             </div>
           </div>
 
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Regulatory Score Weight</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Regulatory Score Weight</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="0"
@@ -98,15 +99,17 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="0.1"
                 value={criteria.regulatoryWeight}
                 onChange={(e) => handleSliderChange('regulatoryWeight', parseFloat(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.regulatoryWeight.toFixed(1)}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.regulatoryWeight.toFixed(1)}
+              </span>
             </div>
           </div>
 
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Cost Factor Weight</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Cost Factor Weight</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="0"
@@ -114,15 +117,17 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="0.1"
                 value={criteria.costWeight}
                 onChange={(e) => handleSliderChange('costWeight', parseFloat(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.costWeight.toFixed(1)}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.costWeight.toFixed(1)}
+              </span>
             </div>
           </div>
 
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Max Distance (km)</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Max Distance (km)</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="10"
@@ -130,15 +135,17 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="10"
                 value={criteria.maxDistance}
                 onChange={(e) => handleSliderChange('maxDistance', parseInt(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.maxDistance}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.maxDistance}
+              </span>
             </div>
           </div>
 
-          <div>
-            <Label className="text-sm text-gray-600 font-medium">Min Capacity (MW)</Label>
-            <div className="flex items-center space-x-2 mt-1">
+          <div className="bg-white p-4 rounded-lg border border-gray-200">
+            <Label className="text-sm font-medium text-gray-700 mb-2 block">Min Capacity (MW)</Label>
+            <div className="flex items-center space-x-3">
               <input
                 type="range"
                 min="1"
@@ -146,25 +153,39 @@ export default function RecommendationPanel({ onRecommendationsGenerated }: Reco
                 step="5"
                 value={criteria.minCapacity}
                 onChange={(e) => handleSliderChange('minCapacity', parseInt(e.target.value))}
-                className="flex-1"
+                className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               />
-              <span className="text-sm text-gray-600 w-10">{criteria.minCapacity}</span>
+              <span className="text-sm font-semibold text-gray-800 bg-gray-100 px-2 py-1 rounded min-w-[3rem] text-center">
+                {criteria.minCapacity}
+              </span>
             </div>
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 rounded-lg border border-blue-200">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-blue-700">Total Weights:</span>
+            <span className="text-sm font-bold text-blue-800">
+              {(criteria.renewableWeight + criteria.demandWeight + criteria.regulatoryWeight + criteria.costWeight).toFixed(1)}
+            </span>
           </div>
         </div>
 
         <Button 
           onClick={generateRecommendations} 
           disabled={loading}
-          className="w-full text-gray-600"
+          className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-0 py-3 font-medium"
         >
-          {loading ? 'Generating...' : 'Generate Recommendations'}
+          {loading ? (
+            <div className="flex items-center space-x-2">
+              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              <span>Generating...</span>
+            </div>
+          ) : (
+            'Generate Site Recommendations'
+          )}
         </Button>
-
-        <div className="text-xs text-gray-500">
-          Total weights: {(criteria.renewableWeight + criteria.demandWeight + criteria.regulatoryWeight + criteria.costWeight).toFixed(1)}
-        </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

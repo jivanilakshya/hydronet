@@ -1,0 +1,6 @@
+<!-- Storage icon -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
+  <rect x="8" y="8" width="8" height="8" fill="none" stroke="#ffffff" stroke-width="2" rx="2"/>
+  <path d="M10 10h4M10 12h4M10 14h4" stroke="#ffffff" stroke-width="1"/>
+</svg>

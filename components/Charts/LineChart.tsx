@@ -70,23 +70,30 @@ export default function LineChart({ data, width = 400, height = 200, title }: Li
         .attr('cy', d => yScale(d.value))
         .attr('r', 4)
         .attr('fill', color)
+        .attr('stroke', '#ffffff')
+        .attr('stroke-width', 2)
         .on('mouseover', function(event, d) {
+          d3.select(this).attr('r', 6);
+          
           const tooltip = d3.select('body').append('div')
             .attr('class', 'tooltip')
             .style('position', 'absolute')
             .style('background', 'rgba(0, 0, 0, 0.8)')
             .style('color', 'white')
-            .style('padding', '8px')
-            .style('border-radius', '4px')
+            .style('padding', '8px 12px')
+            .style('border-radius', '6px')
             .style('font-size', '12px')
+            .style('font-weight', '500')
             .style('pointer-events', 'none')
-            .style('z-index', '1000');
+            .style('z-index', '1000')
+            .style('box-shadow', '0 4px 6px rgba(0, 0, 0, 0.1)');
 
           tooltip.html(`${d.category}: ${d.value}`)
             .style('left', (event.pageX + 10) + 'px')
             .style('top', (event.pageY - 10) + 'px');
         })
         .on('mouseout', function() {
+          d3.select(this).attr('r', 4);
           d3.selectAll('.tooltip').remove();
         });
     });
@@ -96,39 +103,63 @@ export default function LineChart({ data, width = 400, height = 200, title }: Li
       .attr('transform', `translate(0,${innerHeight})`)
       .call(d3.axisBottom(xScale))
       .selectAll('text')
-      .style('font-size', '12px');
+      .style('font-size', '11px')
+      .style('fill', '#6B7280');
 
     // Y Axis
     g.append('g')
       .call(d3.axisLeft(yScale))
       .selectAll('text')
-      .style('font-size', '12px');
+      .style('font-size', '11px')
+      .style('fill', '#6B7280');
+
+    // Add grid lines
+    g.append('g')
+      .attr('class', 'grid')
+      .attr('transform', `translate(0,${innerHeight})`)
+      .call(d3.axisBottom(xScale)
+        .tickSize(-innerHeight)
+        .tickFormat(() => '')
+      )
+      .style('stroke-dasharray', '3,3')
+      .style('opacity', 0.3);
+
+    g.append('g')
+      .attr('class', 'grid')
+      .call(d3.axisLeft(yScale)
+        .tickSize(-innerWidth)
+        .tickFormat(() => '')
+      )
+      .style('stroke-dasharray', '3,3')
+      .style('opacity', 0.3);
 
     // Legend
     const legend = g.append('g')
-      .attr('transform', `translate(${innerWidth - 100}, 20)`);
+      .attr('transform', `translate(${innerWidth - 120}, 10)`);
 
     ['supply', 'demand'].forEach((category, i) => {
       const legendItem = legend.append('g')
-        .attr('transform', `translate(0, ${i * 20})`);
+        .attr('transform', `translate(0, ${i * 25})`);
 
       legendItem.append('circle')
-        .attr('r', 4)
+        .attr('r', 5)
         .attr('fill', colorScale(category as string) as string || '#666666');
 
       legendItem.append('text')
-        .attr('x', 10)
-        .attr('y', 4)
-        .style('font-size', '12px')
-        .text(category);
+        .attr('x', 12)
+        .attr('y', 5)
+        .style('font-size', '13px')
+        .style('font-weight', '500')
+        .style('fill', '#374151')
+        .text(category.charAt(0).toUpperCase() + category.slice(1));
     });
 
   }, [data, width, height]);
 
   return (
-    <div className="bg-white p-4 rounded-lg border">
-      {title && <h3 className="text-lg font-semibold mb-2">{title}</h3>}
-      <svg ref={svgRef} width={width} height={height} />
+    <div className="w-full">
+      {title && <h3 className="text-lg font-semibold mb-4 text-gray-800">{title}</h3>}
+      <svg ref={svgRef} width={width} height={height} className="w-full" />
     </div>
   );
 }

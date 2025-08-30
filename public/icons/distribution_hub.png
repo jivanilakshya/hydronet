@@ -1,0 +1,9 @@
+<!-- Distribution Hub icon -->
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" fill="#8b5cf6" stroke="#ffffff" stroke-width="2"/>
+  <path d="M12 7l-5 5h3v5h4v-5h3l-5-5z" fill="#ffffff"/>
+  <circle cx="7" cy="17" r="1" fill="#ffffff"/>
+  <circle cx="17" cy="17" r="1" fill="#ffffff"/>
+  <circle cx="7" cy="7" r="1" fill="#ffffff"/>
+  <circle cx="17" cy="7" r="1" fill="#ffffff"/>
+</svg>

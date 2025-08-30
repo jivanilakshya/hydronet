@@ -34,67 +34,76 @@ export default function LayerControl({ layerVisibility, onLayerToggle }: LayerCo
   const [expanded, setExpanded] = useState(true);
 
   return (
-    <Card className="w-72">
-      <CardHeader className="pb-3">
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-sm text-gray-600">Map Layers</CardTitle>
-          <Button
-            variant="ghost"
-            size="sm"
-            className='text-gray-600'
-            onClick={() => setExpanded(!expanded)}
-          >
-            {expanded ? '−' : '+'}
-          </Button>
-        </div>
-      </CardHeader>
+    <div className="space-y-4">
       {expanded && (
-        <CardContent className="space-y-3">
+        <div className="space-y-3">
           {Object.entries(LAYER_LABELS).map(([layer, label]) => (
-            <div key={layer} className="flex items-center space-x-3">
-              <div
-                className={`w-3 h-3 rounded-full  ${LAYER_COLORS[layer as keyof typeof LAYER_COLORS]}`}
-              />
-              <Label className="flex-1 text-sm text-gray-600 cursor-pointer" htmlFor={layer}>
-                {label}
-              </Label>
-              <input
-                id={layer}
-                type="checkbox"
-                checked={layerVisibility[layer] || false}
-                onChange={(e) => onLayerToggle(layer, e.target.checked)}
-                className="rounded border-gray-300"
-              />
+            <div
+              key={layer}
+              className="flex items-center space-x-3 p-3 rounded-lg border border-gray-200 bg-white hover:bg-gray-50 transition-colors"
+            >
+              <div className="flex items-center space-x-3 flex-1">
+                <div className={`w-3 h-3 rounded-full ${LAYER_COLORS[layer as keyof typeof LAYER_COLORS]}`} />
+                <Label 
+                  htmlFor={layer} 
+                  className="text-sm font-medium text-gray-700 cursor-pointer flex-1"
+                >
+                  {label}
+                </Label>
+              </div>
+              <div className="relative">
+                <input
+                  id={layer}
+                  type="checkbox"
+                  checked={layerVisibility[layer]}
+                  onChange={(e) => onLayerToggle(layer, e.target.checked)}
+                  className="sr-only"
+                />
+                <div
+                  onClick={() => onLayerToggle(layer, !layerVisibility[layer])}
+                  className={`w-11 h-6 rounded-full cursor-pointer transition-colors ${
+                    layerVisibility[layer] 
+                      ? 'bg-gradient-to-r from-green-500 to-emerald-500' 
+                      : 'bg-gray-300'
+                  }`}
+                >
+                  <div
+                    className={`w-4 h-4 bg-white rounded-full shadow-sm transition-transform transform ${
+                      layerVisibility[layer] ? 'translate-x-6' : 'translate-x-1'
+                    } mt-1`}
+                  />
+                </div>
+              </div>
             </div>
           ))}
-          <div className="pt-2 border-t">
-            <div className="flex space-x-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  Object.keys(LAYER_LABELS).forEach(layer => {
-                    onLayerToggle(layer, true);
-                  });
-                }}
-              >
-                Show All
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  Object.keys(LAYER_LABELS).forEach(layer => {
-                    onLayerToggle(layer, false);
-                  });
-                }}
-              >
-                Hide All
-              </Button>
-            </div>
-          </div>
-        </CardContent>
+        </div>
       )}
-    </Card>
+      
+      <div className="flex space-x-2">
+        <Button
+          size="sm"
+          onClick={() => {
+            Object.keys(LAYER_LABELS).forEach(layer => {
+              onLayerToggle(layer, true);
+            });
+          }}
+          className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white border-0"
+        >
+          Show All
+        </Button>
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={() => {
+            Object.keys(LAYER_LABELS).forEach(layer => {
+              onLayerToggle(layer, false);
+            });
+          }}
+          className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50"
+        >
+          Hide All
+        </Button>
+      </div>
+    </div>
   );
 }

@@ -36,7 +36,7 @@ export default function LeafletMap({
 
     // Initialize map
     if (!mapRef.current) {
-      mapRef.current = L.map('map').setView([40.7128, -74.006], 10);
+      mapRef.current = L.map('map').setView([20.5937, 78.9629], 5); // Center on India
       
       // Add tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -126,10 +126,10 @@ function getIconForAssetType(type: string): string {
     plant: '/icons/plant.png',
     storage: '/icons/storage.png',
     renewable: '/icons/renewable.png',
-    demand_center: '/icons/demand.png',
-    pipeline: '/icons/pipeline.png',
-    distribution_hub: '/icons/hub.png',
-    transport_route: '/icons/transport.png',
+    demand_center: '/icons/demand_center.png',
+    pipeline: '/icons/distribution_hub.png',
+    distribution_hub: '/icons/distribution_hub.png',
+    transport_route: '/icons/distribution_hub.png',
   };
   
   return iconMap[type] || '/icons/default.png';

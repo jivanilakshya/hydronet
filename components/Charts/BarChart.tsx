@@ -48,8 +48,9 @@ export default function BarChart({ data, width = 400, height = 200, title }: Bar
       .attr('height', d => innerHeight - yScale(d.value))
       .attr('fill', '#10b981')
       .attr('opacity', 0.8)
+      .attr('rx', 2)
       .on('mouseover', function(event, d) {
-        d3.select(this).attr('opacity', 1);
+        d3.select(this).attr('opacity', 1).attr('fill', '#059669');
         
         // Tooltip
         const tooltip = d3.select('body').append('div')
@@ -57,18 +58,20 @@ export default function BarChart({ data, width = 400, height = 200, title }: Bar
           .style('position', 'absolute')
           .style('background', 'rgba(0, 0, 0, 0.8)')
           .style('color', 'white')
-          .style('padding', '8px')
-          .style('border-radius', '4px')
+          .style('padding', '8px 12px')
+          .style('border-radius', '6px')
           .style('font-size', '12px')
+          .style('font-weight', '500')
           .style('pointer-events', 'none')
-          .style('z-index', '1000');
+          .style('z-index', '1000')
+          .style('box-shadow', '0 4px 6px rgba(0, 0, 0, 0.1)');
 
         tooltip.html(`${d.label}: ${d.value}`)
           .style('left', (event.pageX + 10) + 'px')
           .style('top', (event.pageY - 10) + 'px');
       })
       .on('mouseout', function() {
-        d3.select(this).attr('opacity', 0.8);
+        d3.select(this).attr('opacity', 0.8).attr('fill', '#10b981');
         d3.selectAll('.tooltip').remove();
       });
 
@@ -77,20 +80,34 @@ export default function BarChart({ data, width = 400, height = 200, title }: Bar
       .attr('transform', `translate(0,${innerHeight})`)
       .call(d3.axisBottom(xScale))
       .selectAll('text')
-      .style('font-size', '12px');
+      .style('font-size', '11px')
+      .style('fill', '#6B7280')
+      .attr('transform', 'rotate(-45)')
+      .style('text-anchor', 'end');
 
     // Y Axis
     g.append('g')
       .call(d3.axisLeft(yScale))
       .selectAll('text')
-      .style('font-size', '12px');
+      .style('font-size', '11px')
+      .style('fill', '#6B7280');
+
+    // Add grid lines
+    g.append('g')
+      .attr('class', 'grid')
+      .call(d3.axisLeft(yScale)
+        .tickSize(-innerWidth)
+        .tickFormat(() => '')
+      )
+      .style('stroke-dasharray', '3,3')
+      .style('opacity', 0.3);
 
   }, [data, width, height]);
 
   return (
-    <div className="bg-white p-4 rounded-lg border">
-      {title && <h3 className="text-lg font-semibold mb-2">{title}</h3>}
-      <svg ref={svgRef} width={width} height={height} />
+    <div className="w-full">
+      {title && <h3 className="text-lg font-semibold mb-4 text-gray-800">{title}</h3>}
+      <svg ref={svgRef} width={width} height={height} className="w-full" />
     </div>
   );
 }
