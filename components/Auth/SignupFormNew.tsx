@@ -55,12 +55,12 @@ export default function SignupForm() {
       {/* Header Navigation */}
       <div className="absolute top-0 left-0 right-0 z-50">
         <nav className="flex items-center justify-between px-8 py-6">
-          <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
+          <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">🌱</span>
             </div>
             <span className="text-xl font-bold text-white">HydroNet</span>
-          </Link>
+          </div>
           
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/dashboard" className="text-gray-300 hover:text-white transition-colors">

@@ -56,12 +56,12 @@ export default function LoginForm() {
         <div className="relative z-10 flex flex-col justify-center px-12 py-16">
           {/* Logo */}
           <div className="mb-12">
-            <Link href="/" className="flex items-center space-x-3 hover:opacity-80 transition-opacity cursor-pointer">
+            <div className="flex items-center space-x-3">
               <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🌱</span>
               </div>
               <span className="text-2xl font-bold text-white">HydroNet</span>
-            </Link>
+            </div>
           </div>
 
           {/* Hero Content */}
@@ -96,12 +96,12 @@ export default function LoginForm() {
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Logo */}
           <div className="lg:hidden text-center mb-8">
-            <Link href="/" className="flex items-center justify-center space-x-3 mb-4 hover:opacity-80 transition-opacity cursor-pointer">
+            <div className="flex items-center justify-center space-x-3 mb-4">
               <div className="w-10 h-10 bg-gradient-to-br from-green-400 to-teal-500 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">🌱</span>
               </div>
               <span className="text-2xl font-bold text-white">HydroNet</span>
-            </Link>
+            </div>
           </div>
 
           {/* Header */}
